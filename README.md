@@ -2,7 +2,7 @@
 
 Simple yet powerful integration with the Lastpass CLI so you can now get your passwords out of your Lastpass vault and straight into the clipboard from within Alfred.
 
-## Current version: 1.5.1
+## Current version: 1.5.2
 Requires Alfred 3 or 4 and LastPass CLI v1.3 or higher
 
 ## Installation
@@ -38,6 +38,8 @@ Requires Alfred 3 or 4 and LastPass CLI v1.3 or higher
 
 ## History
 
+* Version 1.5.2
+	1. Fix name extraction for linked accounts
 * Version 1.5.1
 	1. Updated workflow icon
 * Version 1.5.0

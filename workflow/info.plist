@@ -596,7 +596,7 @@ else {
         my $id;
         my $name;
         my $username;
-        if ( $result =~ '^[\d -:]+(.*) +\[id: ([0-9]*)\] +\[username: (.*)\]' )
+        if ( $result =~ '^[\d -:]{17}(.*) +\[id: ([0-9]*)\] +\[username: (.*)\]' )
         {
             $name     = "$1";
             $id       = "$2";
@@ -1221,7 +1221,7 @@ See installation instructions at https://github.com/lhaeger/lastpass-alfred-work
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.5.1</string>
+	<string>1.5.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/lhaeger/lastpass-alfred-workflow</string>
 </dict>

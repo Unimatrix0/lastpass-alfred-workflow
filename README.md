@@ -110,3 +110,6 @@ Released under the GNU GENERAL PUBLIC LICENSE Version 2, June 1991
 NOTE: This Alfred Workflow is not affiliated in any way with LastPass. The LastPass trademark and logo are owned by LastPass.com. The LastPass logo and product name have been used with permission of the LastPass team.
 
 My thanks go out to LastPass for their awesome product and the new CLI!
+
+
+If you want to suppport this project [buy me a coffee](https://www.buymeacoffee.com/lhaeger)!

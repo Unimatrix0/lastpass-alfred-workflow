@@ -2,12 +2,12 @@
 
 Simple yet powerful integration with the Lastpass CLI so you can now get your passwords out of your Lastpass vault and straight into the clipboard from within Alfred.
 
-## Current version: 1.5.2
-Requires Alfred 3 or 4 and LastPass CLI v1.3 or higher
+## Current version: 1.5.3
+Requires Alfred 3, 4, or 5 and LastPass CLI v1.3 or higher
 
 ## Installation
 
-1. Ensure you have Alfred 3 or 4 installed with the Alfred Powerpack License
+1. Ensure you have Alfred 3, 4, or 5 installed with the Alfred Powerpack License
 2. Install LastPass command line interface
 	1. using MacPorts: `sudo port install lastpass-cli lastpass-cli-doc`
 	2. using HomeBrew: `brew install lastpass-cli`
@@ -19,6 +19,7 @@ Requires Alfred 3 or 4 and LastPass CLI v1.3 or higher
 
 * `lpsetemail yourname@example.com` - must be run when you first install/upgrade to version 1.2 or higher
 * `lpsettimeout NUMSEC` - Set number of seconds until your login times out (where NUMSEC is an integer such as 28800, if you use 0 that will keep you logged in until your computer restarts)
+* `lptrust` - Enable or disable MFA bypass
 * `lplogin` - Log in to LastPass
 * `lplogout` - Log out of LastPass
 * `lp <query>` Search Lastpass vault for item containing `<query>` 
@@ -38,6 +39,10 @@ Requires Alfred 3 or 4 and LastPass CLI v1.3 or higher
 
 ## History
 
+* Version 1.5.3 ([PR](https://github.com/lhaeger/lastpass-alfred-workflow/pull/3) from [Unimatrix0](https://github.com/Unimatrix0))
+	1. Add configurable option to use --trust in order to bypass multifactor login for next 30 days.
+	2. Fixes login bug by removing unused code previously used to detect osascript path.
+	3. Updates some key types based on how Alfred 5 exports them.
 * Version 1.5.2
 	1. Fix name extraction for linked accounts
 * Version 1.5.1

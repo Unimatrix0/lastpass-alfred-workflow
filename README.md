@@ -39,7 +39,7 @@ Requires Alfred 3, 4, or 5 and LastPass CLI v1.3 or higher
 
 ## History
 
-* Version 1.5.3 ([PR](https://github.com/lhaeger/lastpass-alfred-workflow/pull/3) from [Unimatrix0](https://github.com/Unimatrix0))
+* Version 1.5.3
 	1. Add configurable option to use --trust in order to bypass multifactor login for next 30 days.
 	2. Fixes login bug by removing unused code previously used to detect osascript path.
 	3. Updates some key types based on how Alfred 5 exports them.
@@ -105,7 +105,9 @@ Requires Alfred 3, 4, or 5 and LastPass CLI v1.3 or higher
 
 Created by [Stuart Ryan](http://stuartryan.com) (<= v1.4.7) 
 
-Updated by [Lothar Haeger](https://github.com/lhaeger) (>= v1.4.8)
+Updated by [Lothar Haeger](https://github.com/lhaeger) (v1.4.8 - v1.5.2)
+
+Updated by [Unimatrix0](https://github.com/Unimatrix0) (>= v1.5.3)
 
 ## License
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.brummelhook.alfred.lastpass</string>
+	<string>com.alfredapp.unimatrix0.lastpass</string>
 	<key>category</key>
 	<string>Internet</string>
 	<key>connections</key>
@@ -303,7 +303,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Lothar Haeger</string>
+	<string>Unimatrix0</string>
 	<key>description</key>
 	<string>Search LastPass for usernames, sites and passwords</string>
 	<key>disabled</key>
@@ -320,70 +320,7 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>--display notification "Please wait... preparing login process..." with title "LastPass Login"
-
---Kill any previous login process as sometimes they hang or a user may interrupt them, if there are none (which there often are...) we will get an error response which we ignore.
-try
-	do shell script "killall -9 lpass &gt; /dev/null 2&gt;&amp;1"
-end try
-
-try
-	set login_email to do shell script "`perl -e 'use strict; use warnings; my $emailAddress =`security find-generic-password -w -s \"alfred-lastpass-email-address\"`; chomp $emailAddress; print $emailAddress;'`"
-on error
-	display alert "Email address not set" message "It appears that no email address has been set. Please run 'lpsetemail your_email@example.com' and try again." as critical
-	return
-end try
-
---Try to get a login timeout if a custom one has been set, if not we set to default
-try
-	set login_timeout to do shell script "`perl -e 'use strict; use warnings; my $loginTimeout =`security find-generic-password -w -s \"alfred-lastpass-login-timeout\"`; chomp $loginTimeout; print $loginTimeout;'`"
-on error
-	set login_timeout to 28800
-end try
-
---Try to determine if the user has specified to use --trust on login, if not we don't use it.
-try
-	set login_trust to do shell script "`perl -e 'use strict; use warnings; my $trust =`security find-generic-password -w -s \"alfred-lastpass-login-trust\"`; chomp $trust; print $trust;'`"
-on error
-	set login_trust to "False"
-end try
-if (login_trust = "True") then
-	set login_command to "login --trust"
-else
-	set login_command to "login"
-end if
-
-set osascript to (system attribute "alfred_preferences") &amp; "/workflows/" &amp; (system attribute "alfred_workflow_uid") &amp; "/passwordInput.osascript"
-
-do shell script "export LPASS_ASKPASS=\"" &amp; osascript &amp; "\""
-do shell script "launchctl setenv LPASS_ASKPASS \"" &amp; osascript &amp; "\""
-
-do shell script "launchctl setenv LPASS_AGENT_TIMEOUT " &amp; login_timeout
-
-tell application "Finder"
-	if exists POSIX file "/usr/bin/lpass" then
-		set lpass_binary to "/usr/bin/lpass"
-	else if exists POSIX file "/usr/local/bin/lpass" then
-		set lpass_binary to "/usr/local/bin/lpass"
-	else if exists POSIX file "/opt/local/bin/lpass" then
-		set lpass_binary to "/opt/local/bin/lpass"
-	else if exists POSIX file "/opt/homebrew/bin/lpass" then
-		set lpass_binary to "/opt/homebrew/bin/lpass"
-	end if
-end tell
-
---improvement required here, test if we actually HAVE an lpass_binary and if not error out
-
-if ("{query}" = "scriptlocationnotset") then
-	display notification "Please wait... the alfred search will be presented once login is complete." with title "LastPass Login"
-end if
-
-do shell script "/bin/bash -c '" &amp; "export TERM=\"xterm-256color\" &amp;&amp; export LPASS_ASKPASS=\"" &amp; osascript &amp; "\" &amp;&amp; export LPASS_AGENT_TIMEOUT=" &amp; login_timeout &amp; " &amp;&amp; " &amp; lpass_binary &amp; " " &amp; login_command &amp; " " &amp; login_email &amp; " &amp;&amp; clear &amp;&amp; " &amp; lpass_binary &amp; " ls --sync=now &gt; /dev/null 2&gt;&amp;1 &amp;&amp; exit 0'"
-
-
-if ("{query}" = "scriptlocationnotset") then
-	tell application id "com.runningwithcrayons.Alfred" to search "lp "
-end if</string>
+				<string>--display notification "Please wait... preparing login process..." with title "LastPass Login"--Kill any previous login process as sometimes they hang or a user may interrupt them, if there are none (which there often are...) we will get an error response which we ignore.try	do shell script "killall -9 lpass &gt; /dev/null 2&gt;&amp;1"end trytry	set login_email to do shell script "`perl -e 'use strict; use warnings; my $emailAddress =`security find-generic-password -w -s \"alfred-lastpass-email-address\"`; chomp $emailAddress; print $emailAddress;'`"on error	display alert "Email address not set" message "It appears that no email address has been set. Please run 'lpsetemail your_email@example.com' and try again." as critical	returnend try--Try to get a login timeout if a custom one has been set, if not we set to defaulttry	set login_timeout to do shell script "`perl -e 'use strict; use warnings; my $loginTimeout =`security find-generic-password -w -s \"alfred-lastpass-login-timeout\"`; chomp $loginTimeout; print $loginTimeout;'`"on error	set login_timeout to 28800end try--Try to determine if the user has specified to use --trust on login, if not we don't use it.try	set login_trust to do shell script "`perl -e 'use strict; use warnings; my $trust =`security find-generic-password -w -s \"alfred-lastpass-login-trust\"`; chomp $trust; print $trust;'`"on error	set login_trust to "False"end tryif (login_trust = "True") then	set login_command to "login --trust"else	set login_command to "login"end ifset osascript to (system attribute "alfred_preferences") &amp; "/workflows/" &amp; (system attribute "alfred_workflow_uid") &amp; "/passwordInput.osascript"do shell script "export LPASS_ASKPASS=\"" &amp; osascript &amp; "\""do shell script "launchctl setenv LPASS_ASKPASS \"" &amp; osascript &amp; "\""do shell script "launchctl setenv LPASS_AGENT_TIMEOUT " &amp; login_timeouttell application "Finder"	if exists POSIX file "/usr/bin/lpass" then		set lpass_binary to "/usr/bin/lpass"	else if exists POSIX file "/usr/local/bin/lpass" then		set lpass_binary to "/usr/local/bin/lpass"	else if exists POSIX file "/opt/local/bin/lpass" then		set lpass_binary to "/opt/local/bin/lpass"	else if exists POSIX file "/opt/homebrew/bin/lpass" then		set lpass_binary to "/opt/homebrew/bin/lpass"	end ifend tell--improvement required here, test if we actually HAVE an lpass_binary and if not error outif ("{query}" = "scriptlocationnotset") then	display notification "Please wait... the alfred search will be presented once login is complete." with title "LastPass Login"end ifdo shell script "/bin/bash -c '" &amp; "export TERM=\"xterm-256color\" &amp;&amp; export LPASS_ASKPASS=\"" &amp; osascript &amp; "\" &amp;&amp; export LPASS_AGENT_TIMEOUT=" &amp; login_timeout &amp; " &amp;&amp; " &amp; lpass_binary &amp; " " &amp; login_command &amp; " " &amp; login_email &amp; " &amp;&amp; clear &amp;&amp; " &amp; lpass_binary &amp; " ls --sync=now &gt; /dev/null 2&gt;&amp;1 &amp;&amp; exit 0'"if ("{query}" = "scriptlocationnotset") then	tell application id "com.runningwithcrayons.Alfred" to search "lp "end if</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -1262,11 +1199,11 @@ security add-generic-password -a "alfred-lastpass-login-trust" -s "alfred-lastpa
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>This is an updated and rebranded version of the LastPass CLI workflow initially created by Stuart C. Ryan and published under GPL-2.
+	<string>This is an updated and rebranded version of the LastPass CLI workflow initially created by Stuart Ryan, updated by Lothar Haeger, and now updated by me (Unimatrix0) and published under GPL-2.
 
-Since the original piece has some bugs that prevent using it on macOS Catalina and since 2016 pull requests are ignored, I assume the code has been abandoned and submit my updated fork as an alternative to move forward.
+Since the Lothar Haeger fork hasn't been updated since January 2022 and pull requests have been ignored since January 2023, I assume the code has been abandoned and submit my updated fork as an alternative to move forward.
 
-See installation instructions at https://github.com/lhaeger/lastpass-alfred-workflow</string>
+See installation instructions at https://github.com/Unimatrix0/lastpass-alfred-workflow/</string>
 	<key>uidata</key>
 	<dict>
 		<key>01DFFE0F-13AB-4E19-AC39-8E2177548224</key>
@@ -1473,6 +1410,6 @@ See installation instructions at https://github.com/lhaeger/lastpass-alfred-work
 	<key>version</key>
 	<string>1.5.3</string>
 	<key>webaddress</key>
-	<string>https://github.com/lhaeger/lastpass-alfred-workflow</string>
+	<string>https://github.com/Unimatrix0/lastpass-alfred-workflow/</string>
 </dict>
 </plist>

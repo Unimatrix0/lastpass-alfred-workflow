@@ -12,7 +12,7 @@ Requires Alfred 3, 4, or 5 and LastPass CLI v1.3 or higher
 	1. using MacPorts: `sudo port install lastpass-cli lastpass-cli-doc`
 	2. using HomeBrew: `brew install lastpass-cli`
     3. manually, see https://github.com/LastPass/lastpass-cli for details
-3. Download and open https://github.com/lhaeger/lastpass-alfred-workflow/raw/master/LastPass-Search.alfredworkflow
+3. Download and open https://github.com/Unimatrix0/lastpass-alfred-workflow/blob/master/LastPass%20Search.alfredworkflow
 4. Run `lpsetemail yourloginemail@yourdomain.com` in Alfred to set your LastPass username.
 
 ## Usage
@@ -117,6 +117,3 @@ Released under the GNU GENERAL PUBLIC LICENSE Version 2, June 1991
 NOTE: This Alfred Workflow is not affiliated in any way with LastPass. The LastPass trademark and logo are owned by LastPass.com. The LastPass logo and product name have been used with permission of the LastPass team.
 
 My thanks go out to LastPass for their awesome product and the new CLI!
-
-
-If you want to suppport this project [buy me a coffee](https://www.buymeacoffee.com/lhaeger)!
